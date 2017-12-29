@@ -12,6 +12,7 @@
 import java.sql.*;
 import java.swing.*;
 import javax.swing.JOptionPane;
+import static jdk.nashorn.internal.objects.NativeError.getStackTrace;
 
 public class javaconnect {
     
@@ -19,11 +20,11 @@ public class javaconnect {
     public  static Connection ConnecrDb(){
         
         try{
-            Class.forName("org.");
-            Connection conn  = DriverManager.getConnection("");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost/deno/","root","");
             return conn;
         }catch(Exception ex){
-            printStackTrace(ex);
+            ex.getStackTrace();
             JOptionPane.showMessageDialog(null, ex);
             return null;
         }
